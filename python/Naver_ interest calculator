@@ -1,0 +1,25 @@
+import sys
+def calwelfare(money, years, benefit, general_taxation, taxation):
+    principal = money * years#원금
+    interest_before_tax = money * years * (years + 1)/2 * benefit/12 #세전이자
+    interest_tax = (money * years * (years + 1)/2 * benefit/12) * general_taxation #이자과세
+    RET = (money * years) + ((money * years * (years + 1)/2 * benefit/12) - ((money * years * (years + 1)/2 * benefit/12) * general_taxation))# 세후 수령액
+    print("[대마뱅크]")
+    print("김*연님, 자유적금이 만기되어 알려드립니다.")
+    print(f"원금 : {principal:,.0f}원")
+    print(f"세전이자 : {interest_before_tax:,.0f}원")
+    print(f"이자과세({taxation}) : {interest_tax:,.0f}원")
+    print(f"세후 수령액 : {RET:,.0f}원")
+
+def main():
+    taxation = '15.4%'
+    money = 1500000
+    years = 1
+    benefit = 0.024
+    general_taxation = 0.154
+    years = years * 12
+    #세전이자(단리): 원금*(n+1)/2 * r/12
+    calwelfare(money, years, benefit, general_taxation, taxation)
+
+if __name__=='__main__':
+    main()
